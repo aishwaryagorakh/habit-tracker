@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 let id = 1;
 
-
 export const habitSlice = createSlice({
   name: "habits",
   initialState: [],
   reducers: {
     addHabit: (state, action) => {
-      const today=new Date();
-      let day=today.getDate()-today.getDay();
-      const month= today.getMonth();
-      const year =today.getFullYear();
+      const today = new Date();
+      let day = today.getDate() - today.getDay();
+      const month = today.getMonth();
+      const year = today.getFullYear();
 
       const habit = {
         id: id++,
@@ -19,57 +18,57 @@ export const habitSlice = createSlice({
           {
             id: 0,
             day: "Sunday",
-            dd:day,
-            mm:month,
-            yyyy:year,
+            dd: day,
+            mm: month,
+            yyyy: year,
             isDone: "",
           },
           {
             id: 1,
             day: "Monday",
-            dd:day+1,
-            mm:month,
-            yyyy:year,
+            dd: day + 1,
+            mm: month,
+            yyyy: year,
             isDone: "",
           },
           {
             id: 2,
             day: "Tuesday",
-            dd:day+2,
-            mm:month,
-            yyyy:year,
+            dd: day + 2,
+            mm: month,
+            yyyy: year,
             isDone: "",
           },
           {
             id: 3,
             day: "Wednesday",
-            dd:day+3,
-            mm:month,
-            yyyy:year,
+            dd: day + 3,
+            mm: month,
+            yyyy: year,
             isDone: "",
           },
           {
             id: 4,
             day: "Thursday",
-            dd:day+4,
-            mm:month,
-            yyyy:year,
+            dd: day + 4,
+            mm: month,
+            yyyy: year,
             isDone: "",
           },
           {
             id: 5,
             day: "Friday",
-            dd:day+5,
-            mm:month,
-            yyyy:year,
+            dd: day + 5,
+            mm: month,
+            yyyy: year,
             isDone: "",
           },
           {
             id: 6,
             day: "Saturday",
-            dd:day+6,
-            mm:month,
-            yyyy:year,
+            dd: day + 6,
+            mm: month,
+            yyyy: year,
             isDone: "",
           },
         ],
@@ -86,7 +85,7 @@ export const habitSlice = createSlice({
       let tempHabits = state;
       for (let i = 0; i < tempHabits.length; i++) {
         if (tempHabits[i].id === Number(localStorage.getItem("id"))) {
-          tempHabits[i].weekLog[action.payload].isDone=true;
+          tempHabits[i].weekLog[action.payload].isDone = true;
         }
       }
       return tempHabits;
@@ -95,7 +94,7 @@ export const habitSlice = createSlice({
       let tempHabits = state;
       for (let i = 0; i < tempHabits.length; i++) {
         if (tempHabits[i].id === Number(localStorage.getItem("id"))) {
-          tempHabits[i].weekLog[action.payload].isDone=false;
+          tempHabits[i].weekLog[action.payload].isDone = false;
         }
       }
       return tempHabits;
@@ -104,14 +103,16 @@ export const habitSlice = createSlice({
       let tempHabits = state;
       for (let i = 0; i < tempHabits.length; i++) {
         if (tempHabits[i].id === Number(localStorage.getItem("id"))) {
-          tempHabits[i].weekLog[action.payload].isDone="";
+          tempHabits[i].weekLog[action.payload].isDone = "";
         }
       }
       return tempHabits;
+    },
   },
-}});
+});
 
 // Action creators are generated for each case reducer function
-export const { addHabit, deleteHabit,habitDone,habitUnDone,habitNone } = habitSlice.actions;
+export const { addHabit, deleteHabit, habitDone, habitUnDone, habitNone } =
+  habitSlice.actions;
 
 export default habitSlice.reducer;
